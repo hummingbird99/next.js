@@ -1,6 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { connectDB } from "@/util/database";
 
-export default function Home() {
+export default async function Home() {
+  const client = await connectDB;
+  const db = client.db("dang");
+  let result = await db.collection("post").find().toArray();
+  console.log(result);
+
   return <div>Hi</div>;
 }
