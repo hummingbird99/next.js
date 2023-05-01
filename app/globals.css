@@ -31,7 +31,7 @@ input {
   box-sizing: border-box;
   padding: 10px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 button {
@@ -39,4 +39,53 @@ button {
   background: lightgray;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-up_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up {
+  margin-top: 30%;
+  box-sizing: border-box;
+  width: 400px;
+  height: 650px;
+  padding: 40px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  margin: auto;
+  justify-content: center;
+}
+
+.sign-up_h1 {
+  text-align: center;
+  color: #f27405;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.sign-up_form {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-up_btn {
+  width: 318.4px;
+  height: 40px;
+  font-size: 1rem;
+  padding: 0px;
+  margin-top: 20px;
+  color: white;
+  background-color: #f27405;
+  cursor: pointer;
+}
+
+.sign-up_a {
+  font-size: 14px;
+  color: #f27405;
 }
