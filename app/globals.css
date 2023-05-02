@@ -89,3 +89,8 @@ button {
   font-size: 14px;
   color: #f27405;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
