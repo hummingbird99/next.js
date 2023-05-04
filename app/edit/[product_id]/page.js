@@ -11,15 +11,21 @@ export default async function Edit(props) {
   return (
     <div className="product_post">
       <h4>수정 페이지</h4>
-      <form action="/api/post/new" method="POST">
-        <input name="title" placeholder="상품명" value={result.title} />
-        <input name="price" placeholder="가격" value={result.price} />
+      <form action="/api/post/edit" method="POST">
+        <input name="title" placeholder="상품명" defaultValue={result.title} />
+        <input name="price" placeholder="가격" defaultValue={result.price} />
         <input
           name="description"
           placeholder="상품설명"
-          value={result.description}
+          defaultValue={result.description}
         />
-        <button type="submit">수정</button>
+        <input
+          style={{ display: "none" }}
+          name="_id"
+          placeholder="가격"
+          defaultValue={result._id.toString()}
+        />
+        <button type="submit">Edit</button>
       </form>
     </div>
   );
