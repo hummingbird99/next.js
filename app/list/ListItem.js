@@ -13,12 +13,20 @@ export default function ListItem({ result }) {
             </Link>
             <Link href={`/edit/${result._id}`}>✏️</Link>
             <span
-              onClick={() => {
-                fetch(`/api/post/delete/${result._id}`, {
+              onClick={async () => {
+                const id = result._id.toString();
+                await fetch(`/api/post/remove/${id}`, {
                   method: "DELETE",
                 })
-                  .then(() => console.log("Deleted post"))
-                  .catch((err) => console.error("Error deleting post"));
+                  .then((res, err) => {
+                    if (res.status === 204) {
+                      console.log("Client: Deleted post");
+                    } else {
+                      console.error("Failed deleting post", err);
+                    }
+                  })
+                  .catch((err) => console.error("Error deleting post", err));
+                console.log(result._id);
               }}
             >
               🗑️
