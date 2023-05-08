@@ -4,18 +4,22 @@ import Link from "next/link";
 
 export default function ListItem({ result }) {
   const onRemove = async (id) => {
-    await fetch("/api/post/remove", {
-      method: "POST",
-      body: JSON.stringify(id),
-    })
-      .then((res, err) => {
-        if (res.status === 200) {
-          console.log("Client: Deleted post");
-        } else {
-          console.error("Failed deleting post", err);
-        }
-      })
-      .catch((err) => console.error("Error deleting post", err));
+    try {
+      const res = await fetch("/api/post/remove", {
+        method: "POST",
+        body: JSON.stringify(id),
+      });
+      const data = await res.json();
+      if (res.status === 200) {
+        console.log("Deleted data");
+        alert(data.message);
+      } else {
+        console.error("Not found data");
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Error deleting post", err);
+    }
 
     console.log(id);
   };
