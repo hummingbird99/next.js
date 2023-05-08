@@ -2,12 +2,12 @@ import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
-  if (req.method === "DELETE") {
-    const delId = req.query._id;
-    console.log("QUERY: " + delId);
+  if (req.method === "POST") {
+    const id = JSON.parse(req.body);
+    console.log(req.body);
     const db = (await connectDB).db("dang");
     try {
-      await db.collection("post").deleteOne({ _id: new ObjectId(delId) });
+      await db.collection("post").deleteOne({ _id: new ObjectId(id) });
       res.status(200).json({ message: "게시물을 삭제했습니다." });
     } catch (err) {
       console.error("delete error", err);
