@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 export default function ListItem({ result }) {
-  const onRemove = async (id) => {
+  const onRemove = async (id, e) => {
     try {
       const res = await fetch("/api/post/remove", {
         method: "POST",
@@ -12,7 +12,7 @@ export default function ListItem({ result }) {
       const data = await res.json();
       if (res.status === 200) {
         console.log("Deleted data");
-        alert(data.message);
+        // alert(data.message);
       } else {
         console.error("Not found data");
         alert(data.message);
@@ -33,7 +33,17 @@ export default function ListItem({ result }) {
               <h4>{result.title}</h4>
             </Link>
             <Link href={`/edit/${result._id}`}>✏️</Link>
-            <span onClick={() => onRemove(result._id)}>🗑️</span>
+            <span
+              onClick={(e) => {
+                onRemove(result._id);
+                e.target.parentElement.style.opacity = 0;
+                setTimeout(() => {
+                  e.target.parentElement.style.display = "none";
+                }, 1000);
+              }}
+            >
+              🗑️
+            </span>
             <p>2023-04-25</p>
           </div>
         );
